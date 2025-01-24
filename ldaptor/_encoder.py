@@ -16,7 +16,7 @@ def to_bytes(value):
     * Encodes to utf-8 if the value is a unicode string
     * Otherwise wraps value into bytes()
     """
-
+    "Normalizes BerOctetStrings with decomposed normal form" 
     if type(value).__name__=='BEROctetString':
        value.value=normalize("NFD", value.value.decode("utf-8")).encode("utf-8") 
     if hasattr(value, "toWire"):
