@@ -4,6 +4,9 @@
 
 import warnings
 
+#from ldaptor.protocols.pureber import BEROctetString
+
+from unicodedata import normalize
 
 def to_bytes(value):
     """
@@ -13,6 +16,9 @@ def to_bytes(value):
     * Encodes to utf-8 if the value is a unicode string
     * Otherwise wraps value into bytes()
     """
+
+    if type(value).__name__=='BEROctetString':
+       value.value=normalize("NFD", value.value.decode("utf-8")).encode("utf-8") 
     if hasattr(value, "toWire"):
         return value.toWire()
     if isinstance(value, int):
