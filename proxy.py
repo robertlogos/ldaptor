@@ -17,6 +17,7 @@ class LoggingProxy(ProxyBase):
         """
         Log the representation of the responses received.
         """
+        #Comentar las dos lineas siguientes para eliminar log
         log.msg("Request => " + repr(request))
         log.msg("Response => " + repr(response))
         return defer.succeed(response)
