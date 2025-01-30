@@ -11,6 +11,8 @@ WORKDIR /app
 
 RUN git clone https://github.com/robertlogos/ldaptor.git
 
+COPY proxy.py /app/ldaptor/proxy.py
+
 WORKDIR /app/ldaptor
 
 CMD ["python", "proxy.py"]
