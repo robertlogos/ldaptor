@@ -26,7 +26,7 @@ La sección con la lógica clave se encuentra en **ldaptor/_encoder.py**:
         if (len(bstr)>3) and (bstr[:3] == b'cn='):
             value.value = bstr.replace(b'\xc3\x84N', b'\xc3\x91') #Letra Ñ
 
-Se puede usar el **Dockerfile** contenerizar el proxy mediante docker o podman::
+Se puede usar el **Dockerfile** para contenerizar el proxy mediante docker o podman (requiere ubicar en el mismo directorio que el **Dockerfile** una copia de **proxy.py** modificado con los valores correctos del endpoint)::
 
     docker build -t ldaptor .
     docker run -p 10389:10389 ldaptor
